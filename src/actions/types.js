@@ -1,0 +1,3 @@
+export const  FETCH_LOCATIONS = 'FETCH_LOCATIONS';
+export const FETCH_EVENTS = 'FETCH_EVENTS';
+export const SIGNUP_ACTION = 'SIGNUP_ACTION';

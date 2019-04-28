@@ -1,20 +1,21 @@
 import React from 'react';
 //import '../css/homepage.css';
-import Selectors from './Selectors';
 import '../css/Header.css';
+import { Link } from 'react-router-dom';
 
 
 
 class Header extends React.Component {
+  
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.myRef = React.createRef();
     this.lastScroll = 0;
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll, {passive: true})
+    window.addEventListener('scroll', this.handleScroll, { passive: true })
   }
 
   componentWillUnmount() {
@@ -22,19 +23,19 @@ class Header extends React.Component {
   }
 
   handleScroll = event => {
-    console.log(event);
+    //console.log(event);
     // console.log(event.srcElement.documentElement.scrollTop);
     // console.log(this.lastScroll);
-    if(this.lastScroll > event.srcElement.documentElement.scrollTop) {
-      console.log('scrolling up');
+    if (this.lastScroll > event.srcElement.documentElement.scrollTop) {
+      //console.log('scrolling up');
       this.lastScroll = event.srcElement.documentElement.scrollTop;
       document.getElementById("navbar").style.padding = "80px 10px";
-    document.getElementById("logo").style.fontSize = "35px";
-      
+      document.getElementById("logo").style.fontSize = "35px";
+
     }
     else {
       this.lastScroll = event.srcElement.documentElement.scrollTop;
-      console.log('scrolling down');
+      //console.log('scrolling down');
       document.getElementById("navbar").style.padding = "10px 10px";
       document.getElementById("logo").style.fontSize = "25px";
     }
@@ -45,15 +46,14 @@ class Header extends React.Component {
     return (
       <div className="top">
         <div className="navbar" id="navbar">
-          <a className="logo" id="logo" href="#default">Company Logo</a>
+          <Link className="logo" id="logo" to="/">Company Logo</Link>
           <div className="navbar-right" id="navbar-right">
-            <a classnames="active" href="#home">Home</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-            <a href="#signin">Sign-in</a>
+            <Link classnames="active" to="/">Home</Link>
+            <Link to="/contact">Contact</Link>
+            <Link to="/about">About</Link>
+            <Link to="/signin">Sign-in</Link>
           </div>
         </div>
-        <Selectors/>
       </div>
     )
   };

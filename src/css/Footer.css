@@ -1,6 +1,6 @@
 .footer-container {
     background-color: black;
-    position: relative;
+    position: absolute;
     height: auto;
     width: 100%;
     text-align: center;

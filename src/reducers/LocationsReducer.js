@@ -1,6 +1,8 @@
+import { FETCH_LOCATIONS } from '../actions/types';
+
 export default (state = ['no data'], action) => {
     switch(action.type) {
-        case 'FETCH_LOCATIONS': {
+        case FETCH_LOCATIONS: {
             return action.payload;
         }
         default: return state;

@@ -1,19 +1,27 @@
 import React from 'react';
 import Header from './Header';
-import SlideShow from './SlideShow';
-import Recommended from './Recommended';
 import Footer from './Footer'
+import { Router, Route } from 'react-router-dom';
+import history from '../history';
+import Home from './Home';
+import SignIn from './homepages/SignIn';
+import '../css/App.css';
 
 class App extends React.Component {
 
     render() {
         return(
-            <div>
+           <Router history={history}>
                 <Header/>
-                <Recommended/>
+                 <div className="app-container">
+                    <div className="main">
+                            <Route path='/' exact component={Home}/>
+                            <Route path='/signin' component={SignIn}/>
+                       
+                    </div>
+                </div>
                 <Footer/>
-               
-            </div>
+           </Router>
             
         )
     };

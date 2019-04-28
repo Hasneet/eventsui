@@ -1,0 +1,116 @@
+.signin-container {
+    margin-top: 18%;
+}
+
+.form-wrapper {
+    margin-left: 30%;
+    margin-right: 30%;
+    width: auto;
+    text-align: center;
+}
+
+
+.form {
+    background-color: black;
+    z-index: 1;
+    overflow: auto;
+    position: relative;
+    border-radius: 4px;
+    margin-bottom: 2%;
+    padding: 7%;
+    border-radius: 5%;
+}
+
+.link-text  {
+    color: white;
+    font-family: inherit;
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tab-group li {
+   float: left;
+   display: table;
+   width: 50%;
+}
+
+/* #signup-link {
+    color: blue;
+} */
+
+/* .tab-active .link-text {
+    color: blue;
+} */
+ 
+.signup-form-container, h3 {
+    color: white;
+    font-family: inherit;
+}
+
+.signin-form-container {
+    color: white;
+    font-family: inherit;
+    
+}
+
+
+.signup-input-container {
+    padding-top: 10%;
+}
+
+.login-input-container {
+    padding-top: 10%;
+}
+
+.signup-input-content {
+    color: white;
+    font-family: inherit;
+   
+    padding: 35px;
+   
+}
+
+.login-input-content {
+    color: white;
+    font-family: inherit;
+    
+    padding: 35px;
+    
+}
+
+.signup-input-content label {
+    font-size: 20px;
+    float:left;
+    padding: 5px;
+    font-family: inherit;
+}
+
+.login-input-content input {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    clear: both;
+}
+
+.login-input-content label {
+    font-size: 20px;
+    float:left;
+    padding: 5px;
+    font-family: inherit;
+    text-align: center;
+}
+
+.signup-input-content input {
+    margin-top:5px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    clear: both;
+}
