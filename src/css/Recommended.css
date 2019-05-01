@@ -3,7 +3,8 @@
 .recommended-container {
     
     color: black;
-    margin-top:200px;
+    margin-top:18%;
+    text-align: center;
 }
 
 
@@ -93,7 +94,7 @@
     font-family: inherit;
     font-size: 12px;
     line-height: 17px;
-    padding: 20px 0px 5px 0px;
+   
     color: rgba(0, 0, 0, 0.7);
     font-weight: normal;
     text-transform: uppercase;
