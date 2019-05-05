@@ -9,7 +9,16 @@ class Recommended extends React.Component {
                 <h3 className="recommended-header ui header">Recommended For You!</h3>
                 <div className="grid-container">
                     <div className="grid-item">
-                        <div class="card">
+                        <div className="card">
+                            <img alt="" src={require('../img/test1.jpg')}></img>
+                            <div className="container">
+                                <h4>Title</h4>
+                                <p>Desc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid-item">
+                        <div className="card">
                             <img alt="" src={require('../img/test1.jpg')}></img>
                             <div class="container">
                                 <h4>Title</h4>
@@ -18,18 +27,9 @@ class Recommended extends React.Component {
                         </div>
                     </div>
                     <div className="grid-item">
-                        <div class="card">
+                        <div className="card">
                             <img alt="" src={require('../img/test1.jpg')}></img>
-                            <div class="container">
-                                <h4>Title</h4>
-                                <p>Desc.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="grid-item">
-                        <div class="card">
-                            <img alt="" src={require('../img/test1.jpg')}></img>
-                            <div class="container">
+                            <div className="container">
                                 <h4>Title</h4>
                                 <p>Desc.</p>
                             </div>
