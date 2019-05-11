@@ -5,7 +5,7 @@ class Recommended extends React.Component {
 
     render() {
         return (
-            <div class="recommended-container">
+            <div className="recommended-container">
                 <h3 className="recommended-header ui header">Recommended For You!</h3>
                 <div className="grid-container">
                     <div className="grid-item">
@@ -20,7 +20,7 @@ class Recommended extends React.Component {
                     <div className="grid-item">
                         <div className="card">
                             <img alt="" src={require('../img/test1.jpg')}></img>
-                            <div class="container">
+                            <div className="container">
                                 <h4>Title</h4>
                                 <p>Desc.</p>
                             </div>

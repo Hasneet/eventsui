@@ -5,13 +5,19 @@ import '../../css/SignIn.css';
 import { Link } from 'react-router-dom';
 //import { signUpAction } from '../../actions';
 let localSignUpString = '';
+let tempFormValues = null;
 
 class SignIn extends React.Component {
 
     state = {signUpString: 'signup'};
 
     componentDidMount() {
-        
+        console.log('inside comp. mount')
+        if(this.state.signUpString === 'signup') {
+            document.getElementById('login-link').style.color = "white";
+            document.getElementById('signup-link').style.color = "blue";
+            console.log(document.getElementById('signup-link'));
+        }
     }
 
     componentDidUpdate() {
@@ -43,8 +49,8 @@ class SignIn extends React.Component {
     }
 
     renderSignUpInput = (formProps) => {
-        console.log('---inside signupInput---')
-        console.log(formProps);
+        // console.log('---inside signupInput---')
+        // console.log(formProps);
         return (
             <div className="signup-input-container">
                 <h3>SignUp For Free</h3>
@@ -69,15 +75,17 @@ class SignIn extends React.Component {
     }
 
     renderLoginInput = (formProps) => {
+        console.log(formProps, '---loginInput---')
         return (
             <div className="login-input-container">
                 <h3>Welcome Back!</h3>
                 <div className="login-input-content">
                     <label>Email</label><br></br>
-                    <input {...formProps.email.input} type="email" autoComplete="off"></input>
+                    <input {...formProps.loginEmail.input} type="email" autoComplete="off"></input>
                     <label>Password</label><br></br>
-                    <input {...formProps.password.input} type="password" autoComplete="off"></input>
+                    <input {...formProps.loginPassword.input} type="password" autoComplete="off"></input>
                     <button className="ui button primary">Login</button>
+                    {this.renderError(formProps.loginEmail.meta)}
                 </div>
             </div>
         )
@@ -97,7 +105,7 @@ class SignIn extends React.Component {
         
         return (
             <div className="signin-form-container">
-                <Fields names={["email", "password"]} component={this.renderLoginInput}/>
+                <Fields names={["loginEmail", "loginPassword"]} component={this.renderLoginInput}/>
             </div>
         )
     }
@@ -111,6 +119,7 @@ class SignIn extends React.Component {
         }
         else if(signUpString === 'login') {
             localSignUpString = signUpString;
+            console.log(localSignUpString, '---inside validateSignUpString---')
             return this.renderLoginForm();
         }   
     }
@@ -146,10 +155,12 @@ class SignIn extends React.Component {
 };
 
 const validate = (formValues) => {
-    //console.log(formValues, '---inisde validate ---')
+    tempFormValues = formValues;
+    console.log(formValues, '---inisde validate ---')
+    let emailValidater = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let errors = {};
-    if(localSignUpString === 'signup') {
-        let emailValidater = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    //if(localSignUpString === 'signup') {
         
         if(!formValues.firstName) errors.firstName = 'You must enter your first name.';
         if(!formValues.lastName) errors.lastName = 'You must enter your last name.';
@@ -165,15 +176,15 @@ const validate = (formValues) => {
             if(!formValues.password.length >= 8) errors.passwordLength = 'Passwod must be at least 8 characters.';
         }
         if(formValues.password!==formValues.password2) errors.mismatch = 'Passwords do not match.';
-    }
-    else if(localSignUpString === 'login') {
-        let emailValidater = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(!formValues.email) errors.email = 'Please enter your email.';
-        if(formValues.email) {
-            if(!emailValidater.test(formValues.email.toLowerCase())) errors.email = 'Please enter a valid email.';
+    //}
+   // else if(localSignUpString === 'login') {
+        
+        if(!formValues.loginEmail) errors.loginEmail = 'Please enter your email.';
+        if(formValues.loginEmail) {
+            if(!emailValidater.test(formValues.loginEmail.toLowerCase())) errors.loginEmail = 'Please enter a valid email.';
         }
-        if(!formValues.password) errors.password = 'Please enter your password.';
-    }
+        if(!formValues.loginPassword) errors.loginPassword = 'Please enter your password.';
+    //}
     return errors;
 }
 
@@ -189,5 +200,7 @@ const validate = (formValues) => {
 
 export default reduxForm({
     form: 'signInCreate',
-    validate
+    validate,
+    enableReinitialize: true,
+    shouldValidate: () => true
 })(SignIn);
