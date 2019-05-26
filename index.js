@@ -4,11 +4,27 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const path = require('path');
-const port = 5000;
+const port = process.env.PORT || 5001;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+
+//production mode
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')));
+    //
+    app.get('*', (req, res) => {
+      res.sendfile('./client/build/index.html');
+    })
+  }
+
+app.get('*', (req,res) => {
+
+    res.send('Welcome TO server');
+    
+    //res.sendFile(path.resolve('../client/public/index.html'));
+})
 
 app.post('/serverBase/signUp', async(req, res, next) => {
     try{
